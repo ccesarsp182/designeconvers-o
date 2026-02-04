@@ -5,6 +5,7 @@ import {
   ChevronDown, 
   CheckCircle2, 
   ArrowRight, 
+  ArrowUp,
   TrendingUp, 
   ShieldCheck, 
   Globe, 
@@ -21,6 +22,42 @@ const WHATSAPP_NUMBER = "5522992845651";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Olá! Gostaria de um orçamento para profissionalizar minha marca.`;
 
 // --- Components ---
+
+const ScrollToTop: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <button
+      onClick={scrollToTop}
+      className={`fixed z-50 p-4 rounded-2xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-brand-600 shadow-2xl transition-all duration-500 hover:scale-110 active:scale-95 ${
+        isVisible ? 'bottom-8 right-8 opacity-100' : 'bottom-0 right-8 opacity-0 pointer-events-none'
+      } hidden md:flex items-center justify-center group`}
+      aria-label="Voltar ao topo"
+    >
+      <ArrowUp size={24} className="group-hover:-translate-y-1 transition-transform" />
+    </button>
+  );
+};
 
 const Navbar: React.FC<{ isDark: boolean; toggleDark: () => void }> = ({ isDark, toggleDark }) => (
   <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 glass border-b border-zinc-200/50 dark:border-zinc-800/50">
@@ -409,6 +446,9 @@ export default function App() {
       <FinalCTA />
       <FAQ />
       <Footer />
+      
+      {/* Back to Top Button */}
+      <ScrollToTop />
       
       {/* Mobile Sticky Floating CTA */}
       <div className="md:hidden fixed bottom-8 right-8 z-50">
