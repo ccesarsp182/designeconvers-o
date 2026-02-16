@@ -167,11 +167,12 @@ const Problem: React.FC = () => (
     
     <div className="max-w-7xl mx-auto relative z-10">
       <div className="grid lg:grid-cols-2 gap-24 items-center">
-        <div className="space-y-8">
-          <h2 className="text-4xl md:text-5xl font-extrabold leading-[1.35] tracking-tight font-heading uppercase">
-            Design não é luxo, <br/>é <span className="text-brand-400">autoridade bruta.</span>
+        <div className="space-y-12">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-heading uppercase flex flex-col gap-2 md:gap-3">
+            <span className="leading-[1.1]">Design não é luxo,</span>
+            <span className="text-brand-400 leading-[1.1]">é autoridade bruta.</span>
           </h2>
-          <p className="text-zinc-400 text-lg font-light leading-relaxed font-sans">
+          <p className="text-zinc-400 text-lg font-light leading-relaxed font-sans max-w-lg">
             Você tem apenas 3 segundos. Se sua marca parece amadora, seu cliente assume que seu serviço também é. Profissionalismo visual é o atalho mais rápido para confiança.
           </p>
           <ul className="space-y-5">
